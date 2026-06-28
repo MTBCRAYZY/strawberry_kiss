@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Catálogo de Galletas</title>
+
+<style>
+
+body{
+    background:#f4f4f4;
+    font-family:Arial, sans-serif;
+    padding:30px;
+}
+
+.producto{
+    width:90%;
+    max-width:1000px;
+    margin:30px auto;
+    background:#f8f3ed;
+    border-radius:20px;
+    display:flex;
+    align-items:center;
+    padding:20px;
+    box-shadow:0 5px 15px rgba(0,0,0,.15);
+}
+
+.producto img{
+    width:350px;
+    height:250px;
+    object-fit:cover;
+    border-radius:15px;
+}
+
+.info{
+    margin-left:30px;
+}
+
+.info h2{
+    color:#b2225a;
+    font-size:36px;
+    margin-bottom:15px;
+}
+
+.info p{
+    font-size:18px;
+    line-height:30px;
+    color:#444;
+}
+
+.precio{
+    font-size:28px;
+    color:#1b3d2f;
+    font-weight:bold;
+    margin-top:15px;
+}
+
+</style>
+</head>
+
+<body>
+
+<h1 style="text-align:center; color:#b2225a;">
+    Catálogo de Galletas 
+</h1>
+
+<div class="contenedor-productos">
+
+    <div class="producto">
+        <img src="{{ url_for('static', filename='img/chocolate.jpg') }}">
+        <div class="info">
+            <h2>Galletas de Chispas de Chocolate</h2>
+
+            <p>
+                Ingredientes:<br>
+                • Harina de trigo<br>
+                • Chispas de chocolate<br>
+                • Mantequilla<br>
+                • Azúcar morena
+            </p>
+
+            <div class="precio">$85.00</div>
+        </div>
+    </div>
+
+    <div class="producto">
+        <img src="{{ url_for('static', filename='img/avena.jpg') }}">
+        <div class="info">
+            <h2>Galletas de Avena</h2>
+
+            <p>
+                Ingredientes:<br>
+                • Avena natural<br>
+                • Harina de trigo<br>
+                • Miel<br>
+                • Canela
+            </p>
+
+            <div class="precio">$75.00</div>
+        </div>
+    </div>
+
+    <div class="producto">
+        <img src="{{ url_for('static', filename='img/mantequilla.jpg') }}">
+        <div class="info">
+            <h2>Galletas de Mantequilla</h2>
+
+            <p>
+                Ingredientes:<br>
+                • Mantequilla<br>
+                • Harina de trigo<br>
+                • Azúcar<br>
+                • Vainilla
+            </p>
+
+            <div class="precio">$70.00</div>
+        </div>
+    </div>
+
+    <div class="producto">
+        <img src="{{ url_for('static', filename='img/redvelvet.jpg') }}">
+        <div class="info">
+            <h2>Galletas Red Velvet</h2>
+
+            <p>
+                Ingredientes:<br>
+                • Cocoa<br>
+                • Colorante rojo<br>
+                • Queso crema<br>
+                • Harina de trigo
+            </p>
+
+            <div class="precio">$95.00</div>
+        </div>
+    </div>
+
+    <div class="producto">
+        <img src="{{ url_for('static', filename='img/nuez.jpg') }}">
+        <div class="info">
+            <h2>Galletas de Nuez</h2>
+
+            <p>
+                Ingredientes:<br>
+                • Nuez triturada<br>
+                • Mantequilla<br>
+                • Harina de trigo<br>
+                • Azúcar glass
+            </p>
+
+            <div class="precio">$90.00</div>
+        </div>
+    </div>
+
+    <div class="producto">
+        <img src="{{ url_for('static', filename='img/doblechocolate.jpg') }}">
+        <div class="info">
+            <h2>Galletas Doble Chocolate</h2>
+
+            <p>
+                Ingredientes:<br>
+                • Cocoa premium<br>
+                • Chispas de chocolate<br>
+                • Mantequilla<br>
+                • Azúcar morena
+            </p>
+
+            <div class="precio">$100.00</div>
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>

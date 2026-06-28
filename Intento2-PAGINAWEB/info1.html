@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+
+<link rel="stylesheet" href="style.css">
+
+<title>Información Ambiental</title>
+
+
+
+<style>
+
+title {
+    text-align: center;
+    font-family: 'Raleway', sans-serif;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    background-color: rgba(94, 255, 102, 0.959);
+}
+
+body{
+  font-family: 'Raleway', sans-serif;
+  background:#eaf4ea;
+}
+.contenedor{
+  display:grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px,1fr));
+  gap:20px;
+  padding:30px;
+}
+.boton{
+  background:rgba(60, 255, 0, 0.31);
+  padding:20px;
+  border-radius:15px;
+  text-align:center;
+  font-weight:bold;
+  cursor:pointer;
+  box-shadow:0 4px 8px rgba(52, 255, 96, 0.51);
+}
+.boton:hover{
+  background:#4dff53;
+}
+
+body {
+    background-image: url('img.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+
+}
+</style>
+</head>
+
+<body>
+
+<h2 style="text-align:center;">Información</h2>
+
+<div class="contenedor">
+
+<div class="boton" onclick="location.href='intro.html'">Introducción al Medio Ambiente</div>
+
+
+<div class="boton" onclick="location.href='clima.html'">Cambio Climático</div>
+<div class="boton" onclick="location.href='contaminacion.html'">Contaminación</div>
+<div class="boton" onclick="location.href='reciclaje.html'">Reciclaje y Gestión de Residuos</div>
+<div class="boton" onclick="location.href='energias.html'">Energías Renovables</div>
+<div class="boton" onclick="location.href='biodiversidad.html'">Biodiversidad</div>
+<div class="boton" onclick="location.href='consumo.html'">Consumo Responsable</div>
+<div class="boton" onclick="location.href='proyectos.html'">Proyectos y Actividades Ecológicas</div>
+<div class="boton" onclick="location.href='tecnologia.html'">Tecnología y Medio Ambiente</div>
+<div class="boton" onclick="location.href='consejos.html'">Consejos Prácticos</div>
+
+</div>
+
+</body>
+</html>

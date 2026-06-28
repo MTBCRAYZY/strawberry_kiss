@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Promociones Especiales</title>
+
+<style>
+
+body{
+    background:#f4f4f4;
+    font-family:Arial, sans-serif;
+    padding:30px;
+}
+
+.producto{
+    width:90%;
+    max-width:1000px;
+    margin:30px auto;
+    background:#f8f3ed;
+    border-radius:20px;
+    display:flex;
+    align-items:center;
+    padding:20px;
+    box-shadow:0 5px 15px rgba(0,0,0,.15);
+}
+
+.producto img{
+    width:350px;
+    height:250px;
+    object-fit:cover;
+    border-radius:15px;
+}
+
+.info{
+    margin-left:30px;
+}
+
+.info h2{
+    color:#b2225a;
+    font-size:36px;
+    margin-bottom:15px;
+}
+
+.info p{
+    font-size:18px;
+    line-height:30px;
+    color:#444;
+}
+
+.precio{
+    font-size:28px;
+    color:#1b3d2f;
+    font-weight:bold;
+    margin-top:15px;
+}
+
+.precio-anterior{
+    font-size:20px;
+    color:red;
+    text-decoration:line-through;
+}
+
+h1{
+    text-align:center;
+    color:#b2225a;
+    margin-bottom:40px;
+}
+
+</style>
+</head>
+
+<body>
+
+<h1>Promociones Especiales</h1>
+
+<div class="contenedor-productos">
+
+    <div class="producto">
+        <img src="{{ url_for('static', filename='img/promo1.jpg') }}">
+        <div class="info">
+            <h2>2 Panqués por 1</h2>
+
+            <p>
+                Lleva dos panqués artesanales por el precio de uno.
+                Promoción válida todos los martes.
+            </p>
+
+            <div class="precio-anterior">$240.00</div>
+            <div class="precio">$120.00</div>
+        </div>
+    </div>
+
+    <div class="producto">
+        <img src="{{ url_for('static', filename='img/promo2.jpg') }}">
+        <div class="info">
+            <h2>Combo Galletas</h2>
+
+            <p>
+                12 galletas surtidas de diferentes sabores.
+            </p>
+
+            <div class="precio-anterior">$180.00</div>
+            <div class="precio">$140.00</div>
+        </div>
+    </div>
+
+    <div class="producto">
+        <img src="{{ url_for('static', filename='img/promo3.jpg') }}">
+        <div class="info">
+            <h2>Gelatina Familiar</h2>
+
+            <p>
+                Gelatina grande de cualquier sabor con descuento especial.
+            </p>
+
+            <div class="precio-anterior">$120.00</div>
+            <div class="precio">$90.00</div>
+        </div>
+    </div>
+
+    <div class="producto">
+        <img src="{{ url_for('static', filename='img/promo4.jpg') }}">
+        <div class="info">
+            <h2>Paquete Fiesta</h2>
+
+            <p>
+                Incluye 1 panqué, 1 gelatina y 12 galletas.
+            </p>
+
+            <div class="precio-anterior">$450.00</div>
+            <div class="precio">$350.00</div>
+        </div>
+    </div>
+
+    <div class="producto">
+        <img src="{{ url_for('static', filename='img/promo5.jpg') }}">
+        <div class="info">
+            <h2>Descuento para Estudiantes</h2>
+
+            <p>
+                Presenta tu credencial y obtén un 15% de descuento en tu compra.
+            </p>
+
+            <div class="precio">15% OFF</div>
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>

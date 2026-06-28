@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Strawberry Kiss – Pastelería</title>
+
+  <!-- Bootstrap 5 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+
+  <style>
+    :root {
+      --sk-pink:   #f35a7b;
+      --sk-dark:   #0f3d2e;
+      --sk-light:  #fff0f4;
+      --sk-bg:     #e8f0e4;
+    }
+
+    /* ── General ── */
+    body { background: var(--sk-bg); font-family: 'Segoe UI', sans-serif; }
+
+    /* ── HERO ── */
+    .hero {
+      position: relative;
+      height: 100vh;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    #bgVideo {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%;
+      object-fit: cover;
+      filter: brightness(.55);
+    }
+    .hero-overlay {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      color: white;
+      animation: heroFade .9s ease forwards;
+    }
+    @keyframes heroFade {
+      from { opacity: 0; transform: translateY(30px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .hero-overlay h1 {
+      font-size: clamp(2.6rem, 7vw, 5rem);
+      font-weight: 900;
+      text-shadow: 2px 3px 10px rgba(0,0,0,.5);
+      letter-spacing: 2px;
+    }
+    .hero-overlay p {
+      font-size: 1.3rem;
+      margin: 1rem 0 2rem;
+      text-shadow: 1px 2px 6px rgba(0,0,0,.4);
+    }
+    .btn-hero {
+      background: var(--sk-pink);
+      color: white;
+      padding: .85rem 2.4rem;
+      border-radius: 50px;
+      font-size: 1.1rem;
+      font-weight: 700;
+      text-decoration: none;
+      border: 2px solid transparent;
+      transition: all .3s;
+      display: inline-block;
+    }
+    .btn-hero:hover {
+      background: transparent;
+      border-color: white;
+      color: white;
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(0,0,0,.3);
+    }
+
+    /* ── NAVBAR ── */
+    .navbar-custom {
+      background: var(--sk-pink) !important;
+      padding: .75rem 1.5rem;
+    }
+    .navbar-custom .navbar-brand {
+      color: white !important;
+      font-weight: 900;
+      font-size: 1.4rem;
+      letter-spacing: 1px;
+    }
+    .navbar-custom .nav-link {
+      color: rgba(255,255,255,.88) !important;
+      font-weight: 600;
+      font-size: .95rem;
+      transition: color .2s, transform .2s;
+    }
+    .navbar-custom .nav-link:hover {
+      color: white !important;
+      transform: translateY(-2px);
+    }
+    .navbar-custom .navbar-toggler {
+      border-color: rgba(255,255,255,.5);
+    }
+    .navbar-custom .navbar-toggler-icon {
+      filter: invert(1);
+    }
+    .badge-cart {
+      background: #fff;
+      color: var(--sk-pink);
+      font-weight: 700;
+      border-radius: 50px;
+      padding: .3em .7em;
+      font-size: .75rem;
+    }
+
+    /* ── SECCIÓN CATÁLOGO ── */
+    .section-title {
+      font-size: 2.4rem;
+      font-weight: 900;
+      color: var(--sk-pink);
+      text-shadow: 2px 3px 8px rgba(243,90,123,.2);
+    }
+
+    /* ── PRODUCT CARDS ── */
+    .product-card {
+      border: none;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 4px 18px rgba(0,0,0,.1);
+      transition: transform .35s, box-shadow .35s;
+      background: white;
+      cursor: pointer;
+      text-decoration: none;
+      color: inherit;
+    }
+    .product-card:hover {
+      transform: translateY(-8px) scale(1.02);
+      box-shadow: 0 16px 40px rgba(243,90,123,.25);
+      color: inherit;
+    }
+    .product-card img {
+      width: 100%; height: 200px;
+      object-fit: cover;
+      transition: transform .4s;
+    }
+    .product-card:hover img { transform: scale(1.06); }
+    .product-card .card-body { padding: 1.1rem 1.3rem; }
+    .product-card .card-title { color: var(--sk-dark); font-weight: 700; font-size: 1.05rem; }
+    .product-card .card-text { color: #777; font-size: .88rem; }
+    .product-card .card-arrow {
+      color: var(--sk-pink);
+      font-size: 1.3rem;
+      transition: transform .25s;
+    }
+    .product-card:hover .card-arrow { transform: translateX(5px); }
+
+    /* ── FOOTER ── */
+    footer {
+      background: #1a1a2e;
+      color: rgba(255,255,255,.75);
+      padding: 2rem 1.5rem;
+      text-align: center;
+    }
+    footer .footer-brand {
+      color: var(--sk-pink);
+      font-size: 1.5rem;
+      font-weight: 900;
+    }
+
+    /* ── Floating scroll btn ── */
+    #scrollTop {
+      position: fixed; bottom: 28px; right: 28px;
+      background: var(--sk-pink); color: white;
+      border: none; border-radius: 50%;
+      width: 46px; height: 46px; font-size: 1.3rem;
+      cursor: pointer; z-index: 999;
+      opacity: 0; transition: opacity .3s, transform .3s;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 4px 12px rgba(0,0,0,.25);
+    }
+    #scrollTop.visible { opacity: 1; }
+    #scrollTop:hover { transform: translateY(-3px); }
+  </style>
+</head>
+<body>
+
+<!-- ══════════════ HERO ══════════════ -->
+<header class="hero">
+  <video autoplay muted loop playsinline id="bgVideo">
+    <source src="video/portada.mp4" type="video/mp4">
+  </video>
+  <div class="hero-overlay">
+    <h1>🍓 Strawberry Kiss</h1>
+    <p>¡Los mejores pasteles y postres tradicionales!</p>
+    <a href="#catalogo" class="btn-hero">Explorar <i class="bi bi-arrow-down"></i></a>
+  </div>
+</header>
+
+<!-- ══════════════ NAVBAR ══════════════ -->
+<nav class="navbar navbar-expand-lg navbar-custom sticky-top shadow-sm" id="mainNav">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="index.html">🍓 Strawberry Kiss</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navMenu">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item"><a class="nav-link" href="me.html"><i class="bi bi-heart"></i> Nosotros</a></li>
+        <li class="nav-item"><a class="nav-link" href="Lo_Nuevo.html"><i class="bi bi-stars"></i> Lo Nuevo</a></li>
+        <li class="nav-item"><a class="nav-link" href="Pasteles_Eventos.html"><i class="bi bi-cake"></i> Eventos</a></li>
+        <li class="nav-item"><a class="nav-link" href="Panaderia.html"><i class="bi bi-egg-fried"></i> Panadería</a></li>
+        <li class="nav-item"><a class="nav-link" href="Panques.html">Panques</a></li>
+        <li class="nav-item"><a class="nav-link" href="Galletas.html"><i class="bi bi-cookie"></i> Galletas</a></li>
+        <li class="nav-item"><a class="nav-link" href="Gelatina.html">Gelatina</a></li>
+        <li class="nav-item"><a class="nav-link" href="Promociones.html"><i class="bi bi-tag"></i> Promociones</a></li>
+      </ul>
+      <div class="d-flex align-items-center gap-2" id="nav-usuario">
+        <a href="infoOrdenaAqui.html" class="btn btn-outline-light btn-sm rounded-pill">
+          <i class="bi bi-cart3"></i> Carrito
+        </a>
+        <a href="admin.html" class="btn btn-outline-light btn-sm rounded-pill me-1 d-none" id="btn-admin" style="font-weight:700;">
+          <i class="bi bi-shield-check"></i> Admin
+        </a>
+        <a href="login.html" class="btn btn-light btn-sm rounded-pill fw-bold" style="color:var(--sk-pink)">
+          <i class="bi bi-person-circle"></i> Mi Cuenta
+        </a>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- ══════════════ CATÁLOGO ══════════════ -->
+<section id="catalogo" class="py-5">
+  <div class="container">
+    <div class="text-center mb-5" data-aos="fade-up">
+      <h2 class="section-title">Nuestros Productos</h2>
+      <p class="text-muted mt-2">Descubre todo lo que tenemos para ti 🍰</p>
+    </div>
+
+    <div class="row g-4">
+
+      <div class="col-sm-6 col-md-4 col-lg-3" data-aos="zoom-in" data-aos-delay="0">
+        <a href="infoNosotros.html" class="product-card card h-100 d-block">
+          <div class="overflow-hidden"><img src="imagenes/1000098855.png" alt="Nosotros"></div>
+          <div class="card-body d-flex justify-content-between align-items-start">
+            <div><h5 class="card-title">Nosotros</h5><p class="card-text">¡Conoce nuestro emprendimiento!</p></div>
+            <i class="bi bi-arrow-right card-arrow mt-1"></i>
+          </div>
+        </a>
+      </div>
+
+      <div class="col-sm-6 col-md-4 col-lg-3" data-aos="zoom-in" data-aos-delay="50">
+        <a href="infoOrdenaAqui.html" class="product-card card h-100 d-block">
+          <div class="overflow-hidden"><img src="imagenes/ordenaaqui.png" alt="Ordena"></div>
+          <div class="card-body d-flex justify-content-between align-items-start">
+            <div><h5 class="card-title">Ordena Aquí</h5><p class="card-text">¡Realiza tus mejores pedidos!</p></div>
+            <i class="bi bi-arrow-right card-arrow mt-1"></i>
+          </div>
+        </a>
+      </div>
+
+      <div class="col-sm-6 col-md-4 col-lg-3" data-aos="zoom-in" data-aos-delay="100">
+        <a href="infoNuevo.html" class="product-card card h-100 d-block">
+          <div class="overflow-hidden"><img src="imagenes/lonuevo.png" alt="Lo Nuevo"></div>
+          <div class="card-body d-flex justify-content-between align-items-start">
+            <div><h5 class="card-title">Lo Nuevo</h5><p class="card-text">¡Descubre tu postre de temporada!</p></div>
+            <i class="bi bi-arrow-right card-arrow mt-1"></i>
+          </div>
+        </a>
+      </div>
+
+      <div class="col-sm-6 col-md-4 col-lg-3" data-aos="zoom-in" data-aos-delay="150">
+        <a href="infoEventos.html" class="product-card card h-100 d-block">
+          <div class="overflow-hidden"><img src="imagenes/eventos.png" alt="Eventos"></div>
+          <div class="card-body d-flex justify-content-between align-items-start">
+            <div><h5 class="card-title">Eventos</h5><p class="card-text">¡Personaliza tu momento especial!</p></div>
+            <i class="bi bi-arrow-right card-arrow mt-1"></i>
+          </div>
+        </a>
+      </div>
+
+      <div class="col-sm-6 col-md-4 col-lg-3" data-aos="zoom-in" data-aos-delay="200">
+        <a href="infoPanaderia.html" class="product-card card h-100 d-block">
+          <div class="overflow-hidden"><img src="imagenes/panaderia.jpg" alt="Panaderia"></div>
+          <div class="card-body d-flex justify-content-between align-items-start">
+            <div><h5 class="card-title">Panadería</h5><p class="card-text">¡Explora la delicia esponjosa!</p></div>
+            <i class="bi bi-arrow-right card-arrow mt-1"></i>
+          </div>
+        </a>
+      </div>
+
+      <div class="col-sm-6 col-md-4 col-lg-3" data-aos="zoom-in" data-aos-delay="250">
+        <a href="infoPanques.html" class="product-card card h-100 d-block">
+          <div class="overflow-hidden"><img src="imagenes/panques.png" alt="Panques"></div>
+          <div class="card-body d-flex justify-content-between align-items-start">
+            <div><h5 class="card-title">Panques</h5><p class="card-text">¡Millones de sabores te esperan!</p></div>
+            <i class="bi bi-arrow-right card-arrow mt-1"></i>
+          </div>
+        </a>
+      </div>
+
+      <div class="col-sm-6 col-md-4 col-lg-3" data-aos="zoom-in" data-aos-delay="300">
+        <a href="infoGalletas.html" class="product-card card h-100 d-block">
+          <div class="overflow-hidden"><img src="imagenes/galletas.png" alt="Galletas"></div>
+          <div class="card-body d-flex justify-content-between align-items-start">
+            <div><h5 class="card-title">Galletas</h5><p class="card-text">¡El mejor diseño para tu personalidad!</p></div>
+            <i class="bi bi-arrow-right card-arrow mt-1"></i>
+          </div>
+        </a>
+      </div>
+
+      <div class="col-sm-6 col-md-4 col-lg-3" data-aos="zoom-in" data-aos-delay="350">
+        <a href="infoGelatina.html" class="product-card card h-100 d-block">
+          <div class="overflow-hidden"><img src="imagenes/gelatina.png" alt="Gelatina"></div>
+          <div class="card-body d-flex justify-content-between align-items-start">
+            <div><h5 class="card-title">Gelatina</h5><p class="card-text">¡Formas y sabores increíbles!</p></div>
+            <i class="bi bi-arrow-right card-arrow mt-1"></i>
+          </div>
+        </a>
+      </div>
+
+      <div class="col-sm-6 col-md-4 col-lg-3" data-aos="zoom-in" data-aos-delay="400">
+        <a href="infoPromociones.html" class="product-card card h-100 d-block">
+          <div class="overflow-hidden"><img src="imagenes/promociones.png" alt="Promociones"></div>
+          <div class="card-body d-flex justify-content-between align-items-start">
+            <div><h5 class="card-title">Promociones</h5><p class="card-text">¡Los mejores descuentos!</p></div>
+            <i class="bi bi-arrow-right card-arrow mt-1"></i>
+          </div>
+        </a>
+      </div>
+
+      <div class="col-sm-6 col-md-4 col-lg-3" data-aos="zoom-in" data-aos-delay="450">
+        <a href="infoOrdenaAqui.html" class="product-card card h-100 d-block">
+          <div class="overflow-hidden"><img src="imagenes/informacion.jpg" alt="Reseñas"></div>
+          <div class="card-body d-flex justify-content-between align-items-start">
+            <div><h5 class="card-title">Reseñas</h5><p class="card-text">¡Ayúdanos a mejorar!</p></div>
+            <i class="bi bi-arrow-right card-arrow mt-1"></i>
+          </div>
+        </a>
+      </div>
+
+    </div><!-- /row -->
+  </div><!-- /container -->
+</section>
+
+<!-- ══════════════ FOOTER ══════════════ -->
+<footer data-aos="fade-up">
+  <div class="footer-brand mb-1">🍓 Strawberry Kiss</div>
+  <p class="mb-0" style="font-size:.9rem;">Pastelería artesanal &copy; 2024 · Todos los derechos reservados</p>
+</footer>
+
+<!-- Scroll-to-top button -->
+<button id="scrollTop" title="Subir" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+  <i class="bi bi-arrow-up"></i>
+</button>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<!-- AOS -->
+<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+<script src="api.js"></script>
+<script>
+  AOS.init({ duration: 600, once: true, offset: 60 });
+
+  // Scroll-to-top button visibility
+  window.addEventListener('scroll', () => {
+    document.getElementById('scrollTop').classList.toggle('visible', window.scrollY > 400);
+  });
+
+  // Actualizar nav con usuario logueado
+  const u = getUsuario ? getUsuario() : null;
+  if (u?.rol === "admin") {
+    const btnAdmin = document.getElementById("btn-admin");
+    if (btnAdmin) btnAdmin.classList.remove("d-none");
+  }
+  window.addEventListener('DOMContentLoaded', () => {
+    const usuario = getUsuario ? getUsuario() : null;
+    if (usuario) {
+      const nav = document.getElementById('nav-usuario');
+      nav.innerHTML = `
+        <a href="mis-pedidos.html" class="btn btn-outline-light btn-sm rounded-pill">
+          <i class="bi bi-bag-check"></i> Mis Pedidos
+        </a>
+        <a href="infoOrdenaAqui.html" class="btn btn-outline-light btn-sm rounded-pill">
+          <i class="bi bi-cart3"></i> Carrito
+        </a>
+        <span class="text-white fw-semibold" style="font-size:.9rem;">
+          <i class="bi bi-person-circle"></i> ${usuario.nombre}
+        </span>
+        <button onclick="logout()" class="btn btn-sm rounded-pill" style="background:#c0392b;color:white;font-size:.82rem;">
+          <i class="bi bi-box-arrow-right"></i> Salir
+        </button>`;
+    }
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,13 @@
+const router = require('express').Router();
+const ctrl   = require('../controllers/supplierController');
+const { protect, autorizar } = require('../middleware/auth');
+router.use(protect, autorizar('admin'));
+router.get('/',                   ctrl.listar);
+router.get('/recepciones',        ctrl.listarRecepciones);
+router.post('/recepciones',       ctrl.crearRecepcion);
+router.get('/recepciones/:id',    ctrl.obtenerRecepcion);
+router.get('/:id',                ctrl.obtener);
+router.post('/',                  ctrl.crear);
+router.put('/:id',                ctrl.actualizar);
+router.delete('/:id',             ctrl.eliminar);
+module.exports = router;

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Promociones – Strawberry Kiss</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif;}
+body{background-color:#e8f0e4;}
+nav{background-color:#f35a7b;padding:16px 20px;}
+nav ul{list-style:none;display:flex;justify-content:center;gap:20px;flex-wrap:wrap;align-items:center;}
+nav a{color:white;text-decoration:none;font-size:18px;font-weight:bold;}
+nav a:hover{text-decoration:underline;}
+.titulo{color:#fa7693;font-size:52px;font-weight:bold;margin:40px 40px 10px;text-align:center;
+  text-shadow:3px 3px 8px rgb(235,4,4);}
+.contenedor{display:flex;flex-wrap:wrap;justify-content:center;gap:30px;padding:20px 20px 50px;}
+.tarjeta{width:280px;background:#e289a4;border-radius:20px;padding:15px;text-align:center;
+  box-shadow:0 5px 15px rgba(0,0,0,.3);}
+.tarjeta .icono{width:100%;height:175px;display:flex;align-items:center;justify-content:center;
+  font-size:85px;background:rgba(255,255,255,.25);border-radius:12px;margin-bottom:10px;}
+.tarjeta h2{color:#1a1a1a;font-size:20px;margin:8px 0;}
+.precio{font-size:22px;font-weight:bold;color:white;margin-bottom:10px;}
+.btn-agregar{background:#f84f5d;color:white;border:none;padding:11px 0;border-radius:10px;
+  font-size:16px;cursor:pointer;width:100%;transition:.2s;}
+.btn-agregar:hover{background:#c0392b;}
+.btn-agregar:disabled{background:#aaa;cursor:not-allowed;}
+.notif{position:fixed;bottom:22px;right:22px;padding:13px 20px;border-radius:12px;
+  font-size:15px;font-weight:bold;color:white;z-index:9999;opacity:0;transition:opacity .4s;max-width:280px;}
+.notif.show{opacity:1;}
+.notif.ok{background:#27ae60;} .notif.err{background:#e74c3c;} .notif.inf{background:#2980b9;}
+.descuento{color:#fff700;font-size:16px;font-weight:bold;margin-bottom:6px;}
+</style>
+</head>
+<body>
+<nav>
+  <ul>
+    <li><a href="index.html">🏠 Inicio</a></li>
+    <li><a href="Lo_Nuevo.html">Lo Nuevo</a></li>
+    <li><a href="Pasteles_Eventos.html">Eventos</a></li>
+    <li><a href="Panaderia.html">Panadería</a></li>
+    <li><a href="Panques.html">Panqués</a></li>
+    <li><a href="Galletas.html">Galletas</a></li>
+    <li><a href="Gelatina.html">Gelatinas</a></li>
+    <li><a href="Promociones.html">Promociones</a></li>
+    <li><a href="infoOrdenaAqui.html">🛒 Carrito</a></li>
+    <li><a href="mis-pedidos.html">📋 Mis Pedidos</a></li>
+    <div id="nav-usuario"></div>
+  </ul>
+</nav>
+<h1 class="titulo">Promociones</h1>
+<div class="contenedor">
+    <div class="tarjeta">
+      <div class="icono">🍩</div>
+      <h2>2x1 en Donas</h2>
+      <div class="descuento">¡Solo los martes!</div>
+      <div class="precio">$20.00</div>
+      <button class="btn-agregar" id="b-pr_2x1dona"
+        onclick="agregar('pr_2x1dona','2x1 en Donas',20,'🍩','promociones')">
+        ➕ Agregar al carrito
+      </button>
+    </div>
+    <div class="tarjeta">
+      <div class="icono">🫓</div>
+      <h2>Conchas al 20% OFF</h2>
+      <div class="descuento">Aprovecha la oferta</div>
+      <div class="precio">$12.00</div>
+      <button class="btn-agregar" id="b-pr_concha20"
+        onclick="agregar('pr_concha20','Conchas al 20% OFF',12,'🫓','promociones')">
+        ➕ Agregar al carrito
+      </button>
+    </div>
+    <div class="tarjeta">
+      <div class="icono">📦</div>
+      <h2>Paquete Familiar</h2>
+      <div class="descuento">6 Panqués por $800</div>
+      <div class="precio">$800.00</div>
+      <button class="btn-agregar" id="b-pr_familiar"
+        onclick="agregar('pr_familiar','Paquete Familiar',800,'📦','promociones')">
+        ➕ Agregar al carrito
+      </button>
+    </div>
+    <div class="tarjeta">
+      <div class="icono">🎂</div>
+      <h2>Pastel de Cumpleaños</h2>
+      <div class="descuento">15% de descuento</div>
+      <div class="precio">$807.50</div>
+      <button class="btn-agregar" id="b-pr_cumple15"
+        onclick="agregar('pr_cumple15','Pastel de Cumpleaños',807.5,'🎂','promociones')">
+        ➕ Agregar al carrito
+      </button>
+    </div>
+    <div class="tarjeta">
+      <div class="icono">🎁</div>
+      <h2>Gelatina + Panqué</h2>
+      <div class="descuento">Combo Especial</div>
+      <div class="precio">$220.00</div>
+      <button class="btn-agregar" id="b-pr_combo"
+        onclick="agregar('pr_combo','Gelatina + Panqué',220,'🎁','promociones')">
+        ➕ Agregar al carrito
+      </button>
+    </div>
+    <div class="tarjeta">
+      <div class="icono">🧁</div>
+      <h2>Cupcakes Decorados</h2>
+      <div class="descuento">12 piezas al precio de 10</div>
+      <div class="precio">$250.00</div>
+      <button class="btn-agregar" id="b-pr_cupcakes12"
+        onclick="agregar('pr_cupcakes12','Cupcakes Decorados',250,'🧁','promociones')">
+        ➕ Agregar al carrito
+      </button>
+    </div>
+</div>
+<script src="api.js"></script>
+<script>
+actualizarNavUsuario();
+let notifT;
+function toast(txt,tipo='ok'){
+  const el=document.getElementById('notif');
+  el.textContent=txt; el.className='notif '+tipo+' show';
+  clearTimeout(notifT); notifT=setTimeout(()=>el.classList.remove('show'),3000);
+}
+async function agregar(id,nombre,precio,emoji,cat){
+  if(!estaLogueado()){mostrarModalLogin();return;}
+  const btn=document.getElementById('b-'+id);
+  if(btn){btn.disabled=true;btn.textContent='Agregando…';}
+  const {ok,data}=await agregarAlCarrito(id,nombre,precio,1,emoji,cat);
+  if(ok) toast('✅ '+nombre+' agregado al carrito','ok');
+  else   toast(data.error||'Error al agregar','err');
+  if(btn){btn.disabled=false;btn.textContent='➕ Agregar al carrito';}
+}
+</script>
+<div class="notif" id="notif"></div>
+</body>
+</html>

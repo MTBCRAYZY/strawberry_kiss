@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Catálogo de Panadería</title>
+
+<style>
+
+body{
+    background:#f4f4f4;
+    font-family:Arial, sans-serif;
+    padding:30px;
+}
+
+.producto{
+    width:90%;
+    max-width:1000px;
+    margin:30px auto;
+    background:#f8f3ed;
+    border-radius:20px;
+    display:flex;
+    align-items:center;
+    padding:20px;
+    box-shadow:0 5px 15px rgba(0,0,0,.15);
+}
+
+.producto img{
+    width:350px;
+    height:250px;
+    object-fit:cover;
+    border-radius:15px;
+}
+
+.info{
+    margin-left:30px;
+}
+
+.info h2{
+    color:#b2225a;
+    font-size:36px;
+    margin-bottom:15px;
+}
+
+.info p{
+    font-size:18px;
+    line-height:30px;
+    color:#444;
+}
+
+.precio{
+    font-size:28px;
+    color:#1b3d2f;
+    font-weight:bold;
+    margin-top:15px;
+}
+
+h1{
+    text-align:center;
+    color:#b2225a;
+    margin-bottom:40px;
+}
+
+</style>
+</head>
+
+<body>
+
+<h1>Catálogo de Panadería</h1>
+
+<div class="contenedor-productos">
+
+    <div class="producto">
+        <img src="{{ url_for('static', filename='img/concha.jpg') }}">
+        <div class="info">
+            <h2>Concha Tradicional</h2>
+
+            <p>
+                Ingredientes:<br>
+                • Harina de trigo<br>
+                • Mantequilla<br>
+                • Azúcar<br>
+                • Levadura
+            </p>
+
+            <div class="precio">$15.00</div>
+        </div>
+    </div>
+
+    <div class="producto">
+        <img src="{{ url_for('static', filename='img/cuernito.jpg') }}">
+        <div class="info">
+            <h2>Cuernito de Mantequilla</h2>
+
+            <p>
+                Ingredientes:<br>
+                • Harina de trigo<br>
+                • Mantequilla<br>
+                • Leche<br>
+                • Levadura
+            </p>
+
+            <div class="precio">$18.00</div>
+        </div>
+    </div>
+
+    <div class="producto">
+        <img src="{{ url_for('static', filename='img/oreja.jpg') }}">
+        <div class="info">
+            <h2>Oreja Azucarada</h2>
+
+            <p>
+                Ingredientes:<br>
+                • Harina de trigo<br>
+                • Azúcar<br>
+                • Mantequilla<br>
+                • Hojaldre
+            </p>
+
+            <div class="precio">$12.00</div>
+        </div>
+    </div>
+
+    <div class="producto">
+        <img src="{{ url_for('static', filename='img/dona.jpg') }}">
+        <div class="info">
+            <h2>Dona Glaseada</h2>
+
+            <p>
+                Ingredientes:<br>
+                • Harina de trigo<br>
+                • Azúcar glass<br>
+                • Leche<br>
+                • Levadura
+            </p>
+
+            <div class="precio">$20.00</div>
+        </div>
+    </div>
+
+    <div class="producto">
+        <img src="{{ url_for('static', filename='img/rolcanela.jpg') }}">
+        <div class="info">
+            <h2>Rol de Canela</h2>
+
+            <p>
+                Ingredientes:<br>
+                • Harina de trigo<br>
+                • Canela<br>
+                • Azúcar morena<br>
+                • Mantequilla
+            </p>
+
+            <div class="precio">$25.00</div>
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>
+

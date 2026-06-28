@@ -1,0 +1,397 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap');
+/* Importa la fuente "Poppins" desde Google Fonts */
+
+
+body {
+    margin: 0; /* Elimina el margen por defecto */
+    font-family: "Poppins", sans-serif; /* Aplica la fuente Poppins */
+    background: #e9f5e5; /* Fondo verde claro */
+    color: #faeff2; /* Color principal del texto */
+}
+
+
+.hero {
+    position: relative; /* Permite posicionar elementos hijos de forma absoluta */
+    height: 100vh; /* Altura completa de la ventana */
+    overflow: hidden; /* Oculta contenido que se salga del contenedor */
+}
+
+#bgVideo {
+    position: absolute; /* Se posiciona relativo al hero */
+    width: 100%; /* Ocupa todo el ancho */
+    height: 100%; /* Ocupa toda la altura */
+    object-fit: cover; /* Ajusta el video para cubrir el contenedor */
+    filter: brightness(60%); /* Oscurece el video al 60% para mejor contraste del texto */
+}
+
+.hero-text {
+    position: absolute; /* Posiciona el texto sobre el video */
+    top: 50%; /* Centrado vertical */
+    left: 50%; /* Centrado horizontal */
+    transform: translate(-50%, -50%); /* Ajusta el centro exacto */
+    text-align: center; /* Centra el texto */
+    color: white; /* Color del texto */
+}
+
+.btn-hero {
+    padding: 12px 30px; /* Espaciado interno */
+    background: #f39191; /* Fondo verde */
+    color: white; /* Texto blanco */
+    border-radius: 30px; /* Bordes redondeados */
+    text-decoration: none; /* Sin subrayado */
+}
+
+
+.menu {
+    background: #f15d5d; /* Fondo verde oscuro */
+    padding: 12px; /* Espaciado interno */
+    display: flex; /* Distribuye enlaces en fila */
+    justify-content: center; /* Centra horizontalmente */
+    gap: 30px; /* Separación entre enlaces */
+}
+
+.menu a {
+    color: #d6f5dd; /* Color de texto de los enlaces */
+    text-decoration: none; /* Sin subrayado */
+}
+
+
+.btn-regresar {
+    display: inline-block; /* Muestra como bloque en línea */
+    margin: 20px 40px; /* Margen superior/inferior y lateral */
+    padding: 10px 25px; /* Espaciado interno */
+    background: #f03c5a; /* Fondo verde */
+    color: white; /* Texto blanco */
+    text-decoration: none; /* Sin subrayado */
+    border-radius: 25px; /* Bordes redondeados */
+    font-weight: 600; /* Texto semi-negrita */
+    transition: .3s; /* Transición suave para hover */
+}
+
+.btn-regresar:hover {
+    background: #e99c9c; /* Fondo más oscuro al pasar el mouse */
+    transform: translateX(-5px); /* Movimiento lateral al pasar el mouse */
+}
+
+
+.titulo {
+    text-align: center; /* Centrado del texto */
+    margin: 40px 0; /* Margen superior e inferior */
+    font-size: 2.5rem; /* Tamaño de fuente grande */
+}
+
+
+.grid{
+    display:flex;
+    justify-content:center;
+    gap:25px;
+    flex-wrap:wrap;
+    max-width:1400px;
+    margin:auto;
+    padding:20px;
+}
+
+.card{
+    background:rgb(231, 145, 157);
+    border-radius:15px;
+    padding:15px;
+    width:280px;
+    text-align:center;
+    box-shadow:0 4px 10px rgba(0,0,0,.15);
+    transition:.3s;
+}
+
+.card:hover{
+    transform:translateY(-10px);
+}
+
+.card img{
+    width:100%;
+    height:220px;
+    object-fit:cover;
+    border-radius:10px;
+}
+
+.card h2{
+    color:black;
+    font-size:1.3rem;
+    margin:15px 0 10px;
+}
+
+.precio{
+    font-size:1.4rem;
+    font-weight:bold;
+    color:white;
+    margin:10px 0;
+}
+
+.btn-comprar{
+    background:#1b3d2f;
+    color:white;
+    border:none;
+    padding:12px 25px;
+    border-radius:10px;
+    cursor:pointer;
+    font-weight:bold;
+    font-size:1rem;
+    transition:.3s;
+}
+
+.btn-comprar:hover{
+    background:#2d6a4f;
+    transform:scale(1.05);
+}
+
+a{
+    text-decoration:none;
+    color:inherit;
+}
+
+/* FONDO DE PROYECTOS */
+
+.fondo-proyectos{
+    background-image:url("imagenes/evento2.jpg");
+    background-size:cover;
+    background-position:center;
+    background-attachment:fixed;
+    padding:60px 20px;
+}
+
+.fondo-proyectos h2{
+    color:rgb(243, 160, 194);
+    text-shadow:0 3px 6px rgba(0,0,0,.8);
+}
+
+/* FONDO GENERAL */
+
+.fondo-pagina{
+    background-image:url("imagenes/evento2.jpg");
+    background-size:cover;
+    background-position:center;
+    padding:50px 20px;
+}
+
+.fondo-pagina section,
+.fondo-pagina .grid,
+.fondo-pagina .video-grid{
+    background:rgba(240, 119, 129, 0.88);
+    border-radius:20px;
+    padding:30px;
+    margin:20px auto;
+    max-width:1100px;
+}
+
+/* INFORMACIÓN */
+
+.info-section{
+    display:flex;
+    align-items:center;
+    gap:30px;
+}
+
+.info-section.reverse{
+    flex-direction:row-reverse;
+}
+
+.info-img{
+    width:40%;
+    border-radius:15px;
+    transition:.4s;
+}
+
+.info-img:hover{
+    transform:scale(1.05);
+}
+
+.info-text{
+    width:60%;
+}
+
+/* VIDEOS */
+
+.video-grid{
+    display:flex;
+    justify-content:center;
+    gap:20px;
+    flex-wrap:wrap;
+}
+
+.video-grid video{
+    width:300px;
+    border-radius:15px;
+}
+
+/* ANIMACIÓN */
+
+.animada{
+    animation:flotar 3s ease-in-out infinite;
+}
+
+@keyframes flotar{
+    0%{
+        transform:translateY(0);
+    }
+    50%{
+        transform:translateY(-10px);
+    }
+    100%{
+        transform:translateY(0);
+    }
+}
+
+/* RESPONSIVE */
+
+@media (max-width:768px){
+
+    .menu{
+        flex-wrap:wrap;
+        gap:15px;
+    }
+
+    .info-section,
+    .info-section.reverse{
+        flex-direction:column;
+    }
+
+    .info-img,
+    .info-text{
+        width:100%;
+    }
+
+    .titulo{
+        font-size:2rem;
+    }
+
+    .card{
+        width:90%;
+        max-width:320px;
+    }
+}
+
+/* PRODUCTOS HORIZONTALES */
+
+.contenedor-productos{
+    display:flex;
+    flex-direction:column;
+    gap:30px;
+    width:90%;
+    margin:auto;
+}
+
+.producto{
+    background:#f8f3ed;
+    border-radius:20px;
+    padding:20px;
+    display:flex;
+    align-items:center;
+    gap:30px;
+    box-shadow:0 5px 15px rgba(0,0,0,.15);
+}
+
+.producto img{
+    width:350px;
+    height:250px;
+    object-fit:cover;
+    border-radius:15px;
+}
+
+.info{
+    flex:1;
+}
+
+.info h2{
+    color:#b2225a;
+    font-size:2rem;
+    margin-bottom:15px;
+}
+
+.info p{
+    color:#444;
+    line-height:1.8;
+    font-size:1rem;
+}
+
+.info .precio{
+    color:#1b3d2f;
+    font-size:1.8rem;
+    font-weight:bold;
+    margin-top:15px;
+}
+
+@media (max-width:768px){
+
+    .producto{
+        flex-direction:column;
+        text-align:center;
+    }
+
+    .producto img{
+        width:100%;
+        height:auto;
+    }
+}
+/* CARRITO */
+
+.carrito{
+    position:fixed;
+    top:20px;
+    right:20px;
+    width:300px;
+    background:white;
+    padding:15px;
+    border-radius:15px;
+    box-shadow:0 5px 15px rgba(0,0,0,.3);
+}
+
+.carrito h2{
+    text-align:center;
+    margin-bottom:10px;
+}
+
+#lista-carrito{
+    list-style:none;
+    margin-bottom:10px;
+}
+
+#lista-carrito li{
+    padding:5px 0;
+    border-bottom:1px solid #ddd;
+}
+
+.total{
+    font-weight:bold;
+    font-size:20px;
+    text-align:center;
+}
+
+.carrito{
+    width:90%;
+    max-width:800px;
+    margin:30px auto;
+    background:white;
+    padding:20px;
+    border-radius:15px;
+    box-shadow:0px 5px 15px rgba(0,0,0,.2);
+}
+
+.carrito h2{
+    color:#0f3d2e;
+    margin-bottom:15px;
+}
+
+#lista-carrito{
+    list-style:none;
+    padding:0;
+}
+
+#lista-carrito li{
+    padding:10px;
+    border-bottom:1px solid #ddd;
+}
+
+.total{
+    margin-top:15px;
+    font-size:24px;
+    font-weight:bold;
+    color:#0f3d2e;
+}

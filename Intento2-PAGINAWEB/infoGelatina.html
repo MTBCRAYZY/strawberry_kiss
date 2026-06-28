@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Catálogo de Gelatinas</title>
+
+<style>
+
+body{
+    background:#f4f4f4;
+    font-family:Arial, sans-serif;
+    padding:30px;
+}
+
+.producto{
+    width:90%;
+    max-width:1000px;
+    margin:30px auto;
+    background:#f8f3ed;
+    border-radius:20px;
+    display:flex;
+    align-items:center;
+    padding:20px;
+    box-shadow:0 5px 15px rgba(0,0,0,.15);
+}
+
+.producto img{
+    width:350px;
+    height:250px;
+    object-fit:cover;
+    border-radius:15px;
+}
+
+.info{
+    margin-left:30px;
+}
+
+.info h2{
+    color:#b2225a;
+    font-size:36px;
+    margin-bottom:15px;
+}
+
+.info p{
+    font-size:18px;
+    line-height:30px;
+    color:#444;
+}
+
+.precio{
+    font-size:28px;
+    color:#1b3d2f;
+    font-weight:bold;
+    margin-top:15px;
+}
+
+h1{
+    text-align:center;
+    color:#b2225a;
+    margin-bottom:40px;
+}
+
+</style>
+</head>
+
+<body>
+
+<h1>Catálogo de Gelatinas</h1>
+
+<div class="contenedor-productos">
+
+    <div class="producto">
+        <img src="{{ url_for('static', filename='img/fresa.jpg') }}">
+        <div class="info">
+            <h2>Gelatina de Fresa</h2>
+
+            <p>
+                Ingredientes:<br>
+                • Gelatina sabor fresa<br>
+                • Fresas naturales<br>
+                • Azúcar<br>
+                • Agua purificada
+            </p>
+
+            <div class="precio">$60.00</div>
+        </div>
+    </div>
+
+    <div class="producto">
+        <img src="{{ url_for('static', filename='img/mosaico.jpg') }}">
+        <div class="info">
+            <h2>Gelatina Mosaico</h2>
+
+            <p>
+                Ingredientes:<br>
+                • Cubos de gelatina de sabores<br>
+                • Leche condensada<br>
+                • Leche evaporada<br>
+                • Grenetina
+            </p>
+
+            <div class="precio">$85.00</div>
+        </div>
+    </div>
+
+    <div class="producto">
+        <img src="{{ url_for('static', filename='img/durazno.jpg') }}">
+        <div class="info">
+            <h2>Gelatina de Durazno</h2>
+
+            <p>
+                Ingredientes:<br>
+                • Duraznos en almíbar<br>
+                • Gelatina natural<br>
+                • Azúcar<br>
+                • Agua purificada
+            </p>
+
+            <div class="precio">$70.00</div>
+        </div>
+    </div>
+
+    <div class="producto">
+        <img src="{{ url_for('static', filename='img/rompope.jpg') }}">
+        <div class="info">
+            <h2>Gelatina de Rompope</h2>
+
+            <p>
+                Ingredientes:<br>
+                • Rompope<br>
+                • Leche evaporada<br>
+                • Grenetina<br>
+                • Vainilla
+            </p>
+
+            <div class="precio">$90.00</div>
+        </div>
+    </div>
+
+    <div class="producto">
+        <img src="{{ url_for('static', filename='img/coco.jpg') }}">
+        <div class="info">
+            <h2>Gelatina de Coco</h2>
+
+            <p>
+                Ingredientes:<br>
+                • Coco rallado<br>
+                • Leche de coco<br>
+                • Grenetina<br>
+                • Azúcar
+            </p>
+
+            <div class="precio">$80.00</div>
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>

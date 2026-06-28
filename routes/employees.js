@@ -1,0 +1,11 @@
+const router = require('express').Router();
+const ctrl   = require('../controllers/employeeController');
+const { protect, autorizar } = require('../middleware/auth');
+router.use(protect, autorizar('admin'));
+router.get('/',                   ctrl.listar);
+router.get('/:id',                ctrl.obtener);
+router.post('/',                  ctrl.crear);
+router.put('/:id',                ctrl.actualizar);
+router.delete('/:id',             ctrl.eliminar);
+router.get('/:id/recepciones',    ctrl.recepciones);
+module.exports = router;

@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nuevos Productos de Temporada</title>
+
+<style>
+
+body{
+    background:#f4f4f4;
+    font-family:Arial, sans-serif;
+    padding:30px;
+}
+
+.producto{
+    width:90%;
+    max-width:1000px;
+    margin:30px auto;
+    background:#f8f3ed;
+    border-radius:20px;
+    display:flex;
+    align-items:center;
+    padding:20px;
+    box-shadow:0 5px 15px rgba(0,0,0,.15);
+}
+
+.producto img{
+    width:350px;
+    height:250px;
+    object-fit:cover;
+    border-radius:15px;
+}
+
+.info{
+    margin-left:30px;
+}
+
+.info h2{
+    color:#b2225a;
+    font-size:36px;
+    margin-bottom:15px;
+}
+
+.info p{
+    font-size:18px;
+    line-height:30px;
+    color:#444;
+}
+
+.precio{
+    font-size:28px;
+    color:#1b3d2f;
+    font-weight:bold;
+    margin-top:15px;
+}
+
+h1{
+    text-align:center;
+    color:#b2225a;
+    margin-bottom:40px;
+}
+
+</style>
+</head>
+
+<body>
+
+<h1>Nuevos Productos de Temporada</h1>
+
+<div class="contenedor-productos">
+
+    <div class="producto">
+        <img src="{{ url_for('static', filename='img/redvelvet.jpg') }}">
+        <div class="info">
+            <h2>Panqué Red Velvet</h2>
+
+            <p>
+                Suave panqué de cacao con un toque de vainilla y cobertura de queso crema.
+            </p>
+
+            <div class="precio">$160.00</div>
+        </div>
+    </div>
+
+    <div class="producto">
+        <img src="{{ url_for('static', filename='img/mango.jpg') }}">
+        <div class="info">
+            <h2>Gelatina de Mango Natural</h2>
+
+            <p>
+                Elaborada con mango fresco de temporada y decorada con trozos de fruta.
+            </p>
+
+            <div class="precio">$95.00</div>
+        </div>
+    </div>
+
+    <div class="producto">
+        <img src="{{ url_for('static', filename='img/galleta-rellena.jpg') }}">
+        <div class="info">
+            <h2>Galleta Rellena de Nutella</h2>
+
+            <p>
+                Galleta artesanal con centro cremoso de chocolate y avellanas.
+            </p>
+
+            <div class="precio">$35.00</div>
+        </div>
+    </div>
+
+    <div class="producto">
+        <img src="{{ url_for('static', filename='img/pastel-frutosrojos.jpg') }}">
+        <div class="info">
+            <h2>Pastel de Frutos Rojos</h2>
+
+            <p>
+                Pastel esponjoso decorado con fresas, moras y frambuesas frescas.
+            </p>
+
+            <div class="precio">$650.00</div>
+        </div>
+    </div>
+
+    <div class="producto">
+        <img src="{{ url_for('static', filename='img/carlota-limon.jpg') }}">
+        <div class="info">
+            <h2>Carlota de Limón</h2>
+
+            <p>
+                Postre refrescante elaborado con limón natural y galletas tipo María.
+            </p>
+
+            <div class="precio">$180.00</div>
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>

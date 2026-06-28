@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mis Pedidos – Strawberry Kiss</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+  <script src="api.js"></script>
+
+  <style>
+    :root { --sk-pink: #f35a7b; --sk-dark: #0f3d2e; }
+    body { background: #f8f1f4; font-family: 'Segoe UI', sans-serif; min-height: 100vh; }
+
+    .navbar-custom { background: var(--sk-pink) !important; }
+    .navbar-custom .navbar-brand, .navbar-custom .nav-link { color: white !important; font-weight: 600; }
+    .navbar-custom .nav-link:hover { opacity: .8; }
+    .navbar-custom .navbar-toggler { border-color: rgba(255,255,255,.4); }
+    .navbar-custom .navbar-toggler-icon { filter: invert(1); }
+
+    .page-header {
+      background: linear-gradient(135deg, var(--sk-pink) 0%, #f9b8c7 100%);
+      color: white; text-align: center; padding: 2.5rem 1rem;
+    }
+    .page-header h1 { font-size: 2.3rem; font-weight: 900; }
+
+    /* PEDIDO CARD */
+    .pedido-card {
+      background: white;
+      border-radius: 18px;
+      box-shadow: 0 4px 16px rgba(0,0,0,.09);
+      overflow: hidden;
+      transition: transform .3s, box-shadow .3s;
+    }
+    .pedido-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 30px rgba(243,90,123,.15);
+    }
+    .pedido-header {
+      padding: .9rem 1.3rem;
+      border-bottom: 2px solid #f9e0e8;
+      display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: .5rem;
+    }
+    .pedido-num  { font-weight: 800; color: #555; font-size: .9rem; }
+    .pedido-fecha { font-size: .8rem; color: #aaa; }
+
+    .pedido-body { padding: .9rem 1.3rem; }
+    .prod-row {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: .45rem 0; border-bottom: 1px solid #f8f0f3; font-size: .88rem;
+    }
+    .prod-row:last-child { border-bottom: none; }
+    .prod-nm { flex: 1; color: #444; font-weight: 600; }
+    .prod-qy { color: #999; margin: 0 1rem; }
+    .prod-pr { font-weight: 700; color: var(--sk-pink); }
+
+    .pedido-footer {
+      background: #fffafb; padding: .9rem 1.3rem;
+      border-top: 1px solid #f9e0e8;
+      display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: .5rem;
+    }
+    .total-tag { font-size: 1.2rem; font-weight: 800; color: #e74c3c; }
+
+    .empty-state {
+      text-align: center; padding: 4rem 2rem;
+    }
+    .empty-state .empty-icon { font-size: 4rem; margin-bottom: 1rem; }
+
+    /* status badges override */
+    .badge-completado { background: #d4edda; color: #155724; }
+    .badge-pendiente  { background: #fff3cd; color: #856404; }
+    .badge-rechazado  { background: #f8d7da; color: #721c24; }
+
+    .spinner-section { text-align: center; padding: 4rem; color: #bbb; font-size: 1.1rem; }
+  </style>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-custom shadow-sm sticky-top">
+  <div class="container-fluid">
+    <a class="navbar-brand fw-bold" href="index.html">🍓 Strawberry Kiss</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navMenu">
+      <ul class="navbar-nav me-auto">
+        <li class="nav-item"><a class="nav-link" href="index.html"><i class="bi bi-house"></i> Inicio</a></li>
+        <li class="nav-item"><a class="nav-link" href="infoOrdenaAqui.html"><i class="bi bi-cart3"></i> Carrito</a></li>
+        <li class="nav-item"><a class="nav-link" href="Lo_Nuevo.html">Lo Nuevo</a></li>
+        <li class="nav-item"><a class="nav-link" href="Pasteles_Eventos.html">Eventos</a></li>
+        <li class="nav-item"><a class="nav-link" href="Promociones.html">Promociones</a></li>
+      </ul>
+      <div id="nav-usuario" class="d-flex align-items-center gap-2"></div>
+    </div>
+  </div>
+</nav>
+
+<div class="page-header">
+  <h1 data-aos="fade-down"><i class="bi bi-bag-check me-2"></i>Mis Pedidos</h1>
+  <p class="mb-0" style="opacity:.88;" data-aos="fade-up" data-aos-delay="80">
+    Historial completo de tus órdenes
+  </p>
+</div>
+
+<div class="container py-4">
+  <div id="contenido">
+    <div class="spinner-section">
+      <div class="spinner-border text-danger mb-3" style="width:3rem;height:3rem;"></div>
+      <p>Cargando pedidos…</p>
+    </div>
+  </div>
+</div>
+
+<!-- Toast -->
+<div class="position-fixed bottom-0 end-0 p-3" style="z-index:11">
+  <div id="toastNotif" class="toast align-items-center text-bg-success border-0" role="alert">
+    <div class="d-flex">
+      <div class="toast-body fw-bold" id="toastText">Mensaje</div>
+      <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"></button>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+<script>
+  AOS.init({ duration: 550, once: true });
+  actualizarNavUsuario();
+
+  if (!estaLogueado()) window.location.href = 'login.html';
+
+  const METODOS = { tarjeta:'💳 Tarjeta', transferencia:'🏦 Transferencia', paypal:'🅿️ PayPal', efectivo:'💵 Efectivo' };
+  const ESTADOS = {
+    completado: { label:'✅ Completado', cls:'badge-completado' },
+    pendiente:  { label:'⏳ Pendiente',  cls:'badge-pendiente'  },
+    rechazado:  { label:'❌ Rechazado',  cls:'badge-rechazado'  },
+  };
+
+  function fmtFecha(iso) {
+    if (!iso) return '—';
+    return new Date(iso).toLocaleDateString('es-MX', { day:'2-digit', month:'long', year:'numeric', hour:'2-digit', minute:'2-digit' });
+  }
+
+  function toast(msg, type='success') {
+    const el = document.getElementById('toastNotif');
+    el.className = `toast align-items-center text-bg-${type} border-0`;
+    document.getElementById('toastText').textContent = msg;
+    bootstrap.Toast.getOrCreateInstance(el, { delay:3500 }).show();
+  }
+
+  async function cancelarOrden(id, btn) {
+    if (!confirm('¿Seguro que quieres cancelar este pedido?')) return;
+    btn.disabled = true;
+    btn.innerHTML = '<span class="spinner-border spinner-border-sm me-1"></span>Cancelando…';
+    const { ok, data } = await authFetch(`/pagos/cancelar-orden/${id}`, { method:'POST' });
+    if (ok) { toast('Pedido cancelado correctamente'); cargarPedidos(); }
+    else { toast(data.error || 'No se pudo cancelar','danger'); btn.disabled = false; btn.innerHTML = '<i class="bi bi-x-circle me-1"></i>Cancelar'; }
+  }
+
+  function renderPedido(orden, i) {
+    const est = ESTADOS[orden.estado_pago] || { label: orden.estado_pago, cls:'badge-pendiente' };
+    const met = METODOS[orden.metodo_pago] || orden.metodo_pago;
+    const prods = (orden.productos || []).map(p => `
+      <div class="prod-row">
+        <span class="prod-nm">${p.nombre}</span>
+        <span class="prod-qy">× ${p.cantidad}</span>
+        <span class="prod-pr">$${(p.precio * p.cantidad).toFixed(2)}</span>
+      </div>`).join('');
+    const cancelBtn = orden.estado_pago === 'pendiente'
+      ? `<button class="btn btn-sm btn-danger rounded-pill" onclick="cancelarOrden('${orden._id}', this)">
+           <i class="bi bi-x-circle me-1"></i>Cancelar
+         </button>` : '';
+    return `
+      <div class="pedido-card mb-3" data-aos="fade-up" data-aos-delay="${i * 60}">
+        <div class="pedido-header">
+          <div>
+            <div class="pedido-num"><i class="bi bi-receipt me-1"></i>Orden: ${orden.numeroOrden}</div>
+            <div class="pedido-fecha">${fmtFecha(orden.createdAt)}</div>
+          </div>
+          <span class="badge rounded-pill ${est.cls} px-3 py-2" style="font-size:.82rem;">${est.label}</span>
+        </div>
+        <div class="pedido-body">${prods}</div>
+        <div class="pedido-footer">
+          <div>
+            <small class="text-muted d-block">${met}</small>
+            ${orden.referencia_pago ? `<small class="text-muted">Ref: ${orden.referencia_pago}</small>` : ''}
+            ${orden.notas ? `<small class="text-muted d-block">📝 ${orden.notas}</small>` : ''}
+          </div>
+          <div class="d-flex align-items-center gap-2 flex-wrap">
+            ${cancelBtn}
+            <span class="total-tag">Total: $${Number(orden.total||0).toFixed(2)}</span>
+          </div>
+        </div>
+      </div>`;
+  }
+
+  async function cargarPedidos() {
+    const cont = document.getElementById('contenido');
+    cont.innerHTML = `<div class="spinner-section">
+      <div class="spinner-border text-danger mb-3" style="width:3rem;height:3rem;"></div>
+      <p>Cargando pedidos…</p>
+    </div>`;
+
+    const { ok, data } = await getOrdenes();
+    if (!ok) {
+      cont.innerHTML = `<div class="empty-state">
+        <div class="empty-icon">⚠️</div>
+        <p class="text-muted mb-3">Error al cargar los pedidos.</p>
+        <a href="infoOrdenaAqui.html" class="btn btn-outline-danger rounded-pill">Ir a ordenar</a>
+      </div>`; return;
+    }
+
+    const ordenes = data.ordenes || [];
+    if (!ordenes.length) {
+      cont.innerHTML = `<div class="empty-state" data-aos="zoom-in">
+        <div class="empty-icon">🍓</div>
+        <h4 class="fw-bold" style="color:var(--sk-pink)">Todavía no tienes pedidos</h4>
+        <p class="text-muted mb-4">¡Explora nuestro menú y haz tu primera orden!</p>
+        <a href="infoOrdenaAqui.html" class="btn rounded-pill px-4 fw-bold text-white"
+           style="background:var(--sk-pink);">
+          <i class="bi bi-cart3 me-1"></i>Ordenar ahora
+        </a>
+      </div>`; return;
+    }
+
+    cont.innerHTML = ordenes.map((o,i) => renderPedido(o, i)).join('');
+    AOS.refresh();
+  }
+
+  cargarPedidos();
+</script>
+</body>
+</html>

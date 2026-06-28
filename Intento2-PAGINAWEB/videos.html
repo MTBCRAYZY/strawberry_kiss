@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Videos</title>
+
+    <!-- Enlace a hoja de estilos externa (opcional si ya la usas) -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Estilos internos -->
+    <style>
+        /* Estilo general del cuerpo de la página */
+        body {
+            margin: 0; /* Elimina márgenes por defecto */
+            font-family: Arial, sans-serif; /* Fuente general */
+
+            /* Imagen de fondo */
+            background-image: url(".../img/evento2.jpg");
+            background-size: cover; /* La imagen cubre toda la pantalla */
+            background-position: center; /* Centra la imagen */
+            background-repeat: no-repeat; /* Evita repetición */
+            background-attachment: fixed; /* Fondo fijo al hacer scroll */
+        }
+
+        /* Menú superior */
+        .menu {
+            background-color: #2e7d32;
+            padding: 15px;
+        }
+
+        /* Estilo de enlaces del menú */
+        .menu a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        /* Botón regresar */
+        .btn-regresar {
+            display: inline-block;
+            margin: 20px;
+            padding: 10px 20px;
+            background-color: #4caf50;
+            color: white;
+            text-decoration: none;
+            border-radius: 10px;
+            font-weight: bold;
+        }
+
+        /* Efecto hover del botón */
+        .btn-regresar:hover {
+            background-color: #388e3c;
+        }
+
+        /* Contenedor principal con fondo claro */
+        .fondo-pagina {
+            background-color: rgba(255, 255, 255, 0.88); /* Blanco con transparencia */
+            padding: 40px;
+            margin: 40px;
+            border-radius: 20px;
+        }
+
+        /* Título principal */
+        .titulo {
+            text-align: center;
+            color: #2e7d32;
+            margin-bottom: 10px;
+        }
+
+        /* Texto descriptivo debajo del título */
+        .descripcion {
+            text-align: center;
+            font-size: 16px;
+            color: #444;
+            max-width: 800px;
+            margin: 0 auto 30px auto;
+            line-height: 1.6;
+        }
+
+        /* Contenedor de videos en forma de cuadrícula */
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        /* Estilo de los videos */
+        video {
+            width: 100%;
+            border-radius: 12px;
+        }
+    </style>
+</head>
+
+<body>
+<!-- Inicio del contenido visible -->
+
+    <!-- MENÚ DE NAVEGACIÓN -->
+    <nav class="menu">
+        <!-- Enlace a la página principal -->
+        <a href="index.html">Inicio</a>
+    </nav>
+
+    <!-- BOTÓN REGRESAR -->
+    <!-- Regresa a la sección donde están las tarjetas -->
+    <a href="index.html#contenido" class="btn-regresar">⬅ Regresar</a>
+
+    <!-- CONTENEDOR PRINCIPAL -->
+    <div class="fondo-pagina">
+
+        <!-- TÍTULO -->
+        <h1 class="titulo"> Contaminacion explicada con Michis</h1>
+
+        <!-- TEXTO DESCRIPTIVO -->
+        <p class="descripcion">
+            Nuestro propósito es que puedas entender los efectos causados a base de la
+            contaminación y la forma más sostenible en la que puedas ayudar a este mundo
+            a ser uno mejor.
+        </p>
+
+        <!-- CONTENEDOR DE VIDEOS -->
+        <div class="video-grid">
+
+            <!-- VIDEO 1 -->
+            <video controls>
+                <source src="video/video1.mp4" type="video/mp4">
+                Tu navegador no soporta videos.
+            </video>
+
+            <!-- VIDEO 2 -->
+            <video controls>
+                <source src="video/video2.mp4" type="video/mp4">
+                Tu navegador no soporta videos.
+            </video>
+
+            <!-- VIDEO 3 -->
+            <video controls>
+                <source src="video/video3.mp4" type="video/mp4">
+                Tu navegador no soporta videos.
+            </video>
+
+        </div>
+    </div>
+
+</body>
+</html>

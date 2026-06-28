@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pasteles para Eventos</title>
+
+<style>
+
+body{
+    background:#f4f4f4;
+    font-family:Arial, sans-serif;
+    padding:30px;
+}
+
+.producto{
+    width:90%;
+    max-width:1000px;
+    margin:30px auto;
+    background:#f8f3ed;
+    border-radius:20px;
+    display:flex;
+    align-items:center;
+    padding:20px;
+    box-shadow:0 5px 15px rgba(0,0,0,.15);
+}
+
+.producto img{
+    width:350px;
+    height:250px;
+    object-fit:cover;
+    border-radius:15px;
+}
+
+.info{
+    margin-left:30px;
+}
+
+.info h2{
+    color:#b2225a;
+    font-size:36px;
+    margin-bottom:15px;
+}
+
+.info p{
+    font-size:18px;
+    line-height:30px;
+    color:#444;
+}
+
+.precio{
+    font-size:28px;
+    color:#1b3d2f;
+    font-weight:bold;
+    margin-top:15px;
+}
+
+h1{
+    text-align:center;
+    color:#b2225a;
+    margin-bottom:40px;
+}
+
+</style>
+</head>
+
+<body>
+
+<h1>Pasteles para Eventos</h1>
+
+<div class="contenedor-productos">
+
+    <div class="producto">
+        <img src="{{ url_for('static', filename='img/boda.jpg') }}">
+        <div class="info">
+            <h2>Pastel de Boda</h2>
+
+            <p>
+                Pastel de varios niveles decorado con fondant y flores.
+                Ideal para bodas y celebraciones elegantes.
+            </p>
+
+            <div class="precio">$3,500.00</div>
+        </div>
+    </div>
+
+    <div class="producto">
+        <img src="{{ url_for('static', filename='img/xv.jpg') }}">
+        <div class="info">
+            <h2>Pastel para XV Años</h2>
+
+            <p>
+                Diseño personalizado con colores y temática a elección.
+                Disponible en varios sabores.
+            </p>
+
+            <div class="precio">$2,800.00</div>
+        </div>
+    </div>
+
+    <div class="producto">
+        <img src="{{ url_for('static', filename='img/cumpleanos.jpg') }}">
+        <div class="info">
+            <h2>Pastel de Cumpleaños</h2>
+
+            <p>
+                Decoración temática personalizada para niños y adultos.
+            </p>
+
+            <div class="precio">$950.00</div>
+        </div>
+    </div>
+
+    <div class="producto">
+        <img src="{{ url_for('static', filename='img/bautizo.jpg') }}">
+        <div class="info">
+            <h2>Pastel para Bautizo</h2>
+
+            <p>
+                Decorado con detalles delicados y acabados elegantes.
+            </p>
+
+            <div class="precio">$1,500.00</div>
+        </div>
+    </div>
+
+    <div class="producto">
+        <img src="{{ url_for('static', filename='img/aniversario.jpg') }}">
+        <div class="info">
+            <h2>Pastel de Aniversario</h2>
+
+            <p>
+                Diseños románticos y personalizados para celebrar fechas especiales.
+            </p>
+
+            <div class="precio">$1,800.00</div>
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>
