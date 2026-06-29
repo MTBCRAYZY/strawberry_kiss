@@ -168,9 +168,7 @@ strawberry-kiss/
 | Login no funciona | Verifica que el servidor Node.js esté corriendo |
 
 ---
-## PASWORD AND EMAIL ADMIN
-admin@strawberrykiss.com 
-admin1234
+
 
 ## URL DASHBOARD ADMIN 
 http://localhost:3000/admin.html
